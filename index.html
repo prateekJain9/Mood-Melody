@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Face Detection and Emotion Recognition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>MoodTunes - a playlist for your current mood!</h1>
+        <div id="videoContainer">
+            <video id="video" width="320" height="240" autoplay muted></video>
+            <canvas id="overlayCanvas"></canvas>
+        </div>
+        <button id="storeEmotion">Get playlists</button>
+        <div id="emotionDisplay"></div>
+        <div id="playlists"></div>
+    </div>
+    <script src="face-api.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
