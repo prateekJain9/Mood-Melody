@@ -1,9 +1,13 @@
 // Load face-api models
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('/MoodTunes/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/MoodTunes/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/MoodTunes/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/MoodTunes/models')
+    faceapi.nets.tinyFaceDetector.loadFromUri('/Mood-Melody
+/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('/Mood-Melody
+/models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('/Mood-Melody
+/models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('/Mood-Melody
+/models')
 ]);
 
 document.getElementById('startButton').addEventListener('click', () => {
