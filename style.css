@@ -1,6 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,24 +10,32 @@ body {
     height: 100vh;
 }
 
-#container {
+#initialContainer, #mainContainer {
     text-align: center;
-    background-color: #fff;
+    background-color: #1e1e1e;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 600px;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 75px;
+    font-size: 54px;
+    color: #1db954;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+p {
     font-size: 24px;
+    margin-bottom: 75px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #videoContainer {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 75px;
 }
 
 #video {
@@ -46,12 +55,13 @@ button {
     color: #fff;
     background-color: #1db954;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     margin-top: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 button:hover {
@@ -59,9 +69,10 @@ button:hover {
 }
 
 #emotionDisplay {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #333;
+    margin-top: 300px;
+    font-size: 30px;
+    color: #ffffff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #playlists {
@@ -70,11 +81,12 @@ button:hover {
     gap: 20px;
     justify-content: center;
     margin-top: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .playlist {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
+    background-color: #333333;
+    border: 1px solid #444;
     padding: 15px;
     border-radius: 10px;
     width: 180px;
@@ -92,19 +104,34 @@ button:hover {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+    height: 180px;
 }
 
 .playlist h3 {
     font-size: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
+    color: #1db954;
+    height: 50px;
 }
 
 .playlist a {
     text-decoration: none;
-    color: #1db954;
+    color: white;
     font-weight: bold;
+    background-color: #1db954;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
 }
 
 .playlist a:hover {
-    text-decoration: underline;
+    border:2px solid #fff;
+    background-color: #1aa34a;
 }
+
+#startButton{
+    font-size: 24px;
+}
+
+
