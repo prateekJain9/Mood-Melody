@@ -8,15 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="container">
+    <div id="initialContainer">
+        <h1>MoodTunes -  playlists for your current mood!</h1>
+        <p id="description">Welcome to MoodTunes! We help you find just the right playlist you need right now by looking at your pretty face and detecting your current emotions. Click the button below to get started!</p>
+        <button id="startButton">Let's go</button>
+    </div>
+    <div id="mainContainer" style="display:none;">
         <h1>MoodTunes - a playlist for your current mood!</h1>
         <div id="videoContainer">
             <video id="video" width="320" height="240" autoplay muted></video>
             <canvas id="overlayCanvas"></canvas>
         </div>
         <button id="storeEmotion">Get playlists</button>
-        <div id="emotionDisplay"></div>
+        <div id="emotionDisplay" style="display:none;"></div>
         <div id="playlists"></div>
+        <button id="refreshPage" style="display:none;">Go once again</button>
     </div>
     <script src="face-api.min.js"></script>
     <script src="script.js"></script>
