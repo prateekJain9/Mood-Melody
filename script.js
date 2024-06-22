@@ -1,3 +1,5 @@
+const clientId = '81d93acbecf142548ff77db3e0e8d3da';
+const clientSecret = 'a5a33fc17eaf4b27b7b223f765171358';
 // Load face-api models
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('/Mood-Melody/models'),
