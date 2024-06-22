@@ -1,14 +1,10 @@
 // Load face-api models
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('/Mood-Melody
-/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/Mood-Melody
-/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/Mood-Melody
-/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/Mood-Melody
-/models')
-]);
+    faceapi.nets.tinyFaceDetector.loadFromUri('/Mood-Melody/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('/Mood-Melody/models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('/Mood-Melody/models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('/Mood-Melody/models')
+]).then(startVideo).catch(err => console.error('Error loading models:', err));
 
 document.getElementById('startButton').addEventListener('click', () => {
     document.getElementById('initialContainer').style.display = 'none';
@@ -22,7 +18,7 @@ function startVideo() {
         .then(stream => {
             video.srcObject = stream;
         })
-        .catch(err => console.error(err));
+        .catch(err => console.error('Error accessing webcam:', err));
 }
 
 const video = document.getElementById('video');
