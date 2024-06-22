@@ -1,13 +1,16 @@
-const clientId = '81d93acbecf142548ff77db3e0e8d3da';
-const clientSecret = 'a5a33fc17eaf4b27b7b223f765171358';
-
 // Load face-api models
 Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('/models')
-]).then(startVideo);
+    faceapi.nets.tinyFaceDetector.loadFromUri('/MoodTunes/models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('/MoodTunes/models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('/MoodTunes/models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('/MoodTunes/models')
+]);
+
+document.getElementById('startButton').addEventListener('click', () => {
+    document.getElementById('initialContainer').style.display = 'none';
+    document.getElementById('mainContainer').style.display = 'block';
+    startVideo();
+});
 
 function startVideo() {
     const video = document.getElementById('video');
@@ -18,9 +21,9 @@ function startVideo() {
         .catch(err => console.error(err));
 }
 
+const video = document.getElementById('video');
 video.addEventListener('play', () => {
-    const canvas = faceapi.createCanvasFromMedia(video);
-    document.getElementById('videoContainer').append(canvas);
+    const canvas = document.getElementById('overlayCanvas');
     const displaySize = { width: video.width, height: video.height };
     faceapi.matchDimensions(canvas, displaySize);
 
@@ -74,6 +77,10 @@ function displayPlaylists(playlists) {
         `;
         playlistContainer.appendChild(playlistElement);
     });
+
+    document.getElementById('emotionDisplay').style.display = 'block'; // Show emotion text
+    document.getElementById('refreshPage').style.display = 'block'; // Show refresh button
+    document.getElementById('storeEmotion').style.display = 'none'; // Hide get playlists button
 }
 
 document.getElementById('storeEmotion').addEventListener('click', async () => {
@@ -82,9 +89,14 @@ document.getElementById('storeEmotion').addEventListener('click', async () => {
     if (detections) {
         const emotions = detections.expressions;
         const emotion = Object.keys(emotions).reduce((a, b) => emotions[a] > emotions[b] ? a : b);
-        document.getElementById('emotionDisplay').innerText = `Detected emotion: ${emotion}`;
+        document.getElementById('emotionDisplay').innerText = `You seem to be ${emotion} today. Here are a few playlists for ${emotion} mood.`; // Changed text
         searchPlaylists(emotion);
     } else {
         document.getElementById('emotionDisplay').innerText = 'No face detected. Please try again.';
     }
+});
+
+// Add event listener to refresh page button
+document.getElementById('refreshPage').addEventListener('click', () => {
+    location.reload();
 });
