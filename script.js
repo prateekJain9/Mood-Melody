@@ -1,5 +1,11 @@
+// Define your Spotify API credentials
 const clientId = '81d93acbecf142548ff77db3e0e8d3da';
 const clientSecret = 'a5a33fc17eaf4b27b7b223f765171358';
+
+// Log the clientId and clientSecret to ensure they are defined
+console.log('clientId:', clientId);
+console.log('clientSecret:', clientSecret);
+
 // Load face-api models
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('/Mood-Melody/models'),
@@ -40,6 +46,7 @@ video.addEventListener('play', () => {
 });
 
 async function getAccessToken() {
+    console.log('Getting access token with clientId:', clientId); // Log to verify function call
     const result = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: {
@@ -50,6 +57,7 @@ async function getAccessToken() {
     });
 
     const data = await result.json();
+    console.log('Access token received:', data.access_token); // Log to verify token received
     return data.access_token;
 }
 
