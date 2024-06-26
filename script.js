@@ -1,12 +1,9 @@
-// Define your Spotify API credentials
 const clientId = '81d93acbecf142548ff77db3e0e8d3da';
 const clientSecret = 'a5a33fc17eaf4b27b7b223f765171358';
 
-// Log the clientId and clientSecret to ensure they are defined
 console.log('clientId:', clientId);
 console.log('clientSecret:', clientSecret);
 
-// Load face-api models
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('/Mood-Melody/models'),
     faceapi.nets.faceLandmark68Net.loadFromUri('/Mood-Melody/models'),
@@ -46,7 +43,7 @@ video.addEventListener('play', () => {
 });
 
 async function getAccessToken() {
-    console.log('Getting access token with clientId:', clientId); // Log to verify function call
+    console.log('Getting access token with clientId:', clientId); 
     const result = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: {
@@ -57,7 +54,7 @@ async function getAccessToken() {
     });
 
     const data = await result.json();
-    console.log('Access token received:', data.access_token); // Log to verify token received
+    console.log('Access token received:', data.access_token); 
     return data.access_token;
 }
 
@@ -88,9 +85,9 @@ function displayPlaylists(playlists) {
         playlistContainer.appendChild(playlistElement);
     });
 
-    document.getElementById('emotionDisplay').style.display = 'block'; // Show emotion text
-    document.getElementById('refreshPage').style.display = 'block'; // Show refresh button
-    document.getElementById('storeEmotion').style.display = 'none'; // Hide get playlists button
+    document.getElementById('emotionDisplay').style.display = 'block'; 
+    document.getElementById('refreshPage').style.display = 'block';
+    document.getElementById('storeEmotion').style.display = 'none'; 
 }
 
 document.getElementById('storeEmotion').addEventListener('click', async () => {
@@ -99,14 +96,13 @@ document.getElementById('storeEmotion').addEventListener('click', async () => {
     if (detections) {
         const emotions = detections.expressions;
         const emotion = Object.keys(emotions).reduce((a, b) => emotions[a] > emotions[b] ? a : b);
-        document.getElementById('emotionDisplay').innerText = `You seem to be ${emotion} today. Here are a few playlists for ${emotion} mood.`; // Changed text
+        document.getElementById('emotionDisplay').innerText = `You seem to be ${emotion} today. Here are a few playlists for ${emotion} mood.`; 
         searchPlaylists(emotion);
     } else {
         document.getElementById('emotionDisplay').innerText = 'No face detected. Please try again.';
     }
 });
 
-// Add event listener to refresh page button
 document.getElementById('refreshPage').addEventListener('click', () => {
     location.reload();
 });
